@@ -10,7 +10,7 @@ class AccountDataService {
   }
 
   create(data) {
-    return http.post("/accounts/create", data);
+    return http.post(`/accounts/create`, data);
   }
 
   update(data) {

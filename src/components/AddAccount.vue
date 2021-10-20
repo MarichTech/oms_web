@@ -1,7 +1,9 @@
 <template>
   <h1>Create Account</h1>
 
-     <form>
+
+
+     <form  @submit.prevent="saveAccount()" action="/" method="post">
         <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" required v-model="account.name" placeholder="Add Account Name">
@@ -27,7 +29,7 @@
         </div>
 
 
-        <button class="btn btn-primary" @click="saveAccount">Submit </button>
+        <button class="btn btn-primary"  type="submit">Submit </button>
     </form>
 
 </template>
@@ -44,25 +46,34 @@ export default {
             name: "",
             email: "",
             phonenumber: "",
-            address: ""
+            address: "",
+            data: {}
+
         },
         submitted: false
         };
     },
     methods: {
         saveAccount() {
-        var data = {
-            name: this.account.name,
-            email: this.account.email,
-            phonenumber: this.account.phonenumber,
-            address: this.account.address
-        };
 
-        AccountDataService.create(data)
+
+        let formData = new FormData();
+        formData.append('name', this.account.name)
+        formData.append('email', this.account.email)
+        formData.append('phonenumber', this.account.phonenumber)
+        formData.append('address', this.account.address)
+
+        AccountDataService.create(formData)
             .then(response => {
             this.account.id = response.data.id;
-            console.log(response.data);
-            this.submitted = true;
+            this.data =   JSON.stringify(response);
+            console.log('data response'+ this.data);
+
+                                        if(response.data[0].status==1){
+                            
+                                alert('Data saved successfully');
+                            } 
+        
             })
             .catch(e => {
             console.log(e);
