@@ -1,7 +1,9 @@
-import { createWebHistory, createRouter } from "vue-router";
+import {
+  createWebHistory,
+  createRouter
+} from "vue-router";
 
-const routes =  [
-  {
+const routes = [{
     path: "/",
     alias: "/accounts",
     name: "accounts",
@@ -10,7 +12,7 @@ const routes =  [
   {
     path: "/accounts/:id",
     name: "account-details",
-    component: () => import("./components/Accounts")
+    component: () => import("./components/AccountsInfo")
   },
   {
     path: "/accounts-add",
@@ -27,6 +29,18 @@ const routes =  [
     path: "/signup",
     name: "signup",
     component: () => import("./components/Signup")
+  },
+  {
+    path: "/opportunity",
+    alias: "/opportunity",
+    name: "opportunity",
+    component: () => import("./components/Opportunities")
+  },
+  {
+    path: "/opportunity-add",
+    alias: "/opportunity-add",
+    name: "opportunity-add",
+    component: () => import("./components/AddOpportunity")
   }
 
 ];
