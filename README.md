@@ -1,4 +1,10 @@
-# oms_web
+# Opportunity Management System Vue Js
+
+# Api's Used
+The REST API used is [oms_api](https://github.com/MarichTech/oms_api) feel free to fork or clone.
+* Note follow the required steps in setting up the above REST API if you decide to use it.
+
+
 
 ## Project setup
 ```
